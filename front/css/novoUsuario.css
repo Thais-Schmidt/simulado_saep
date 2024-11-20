@@ -1,0 +1,89 @@
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: -1px 1px 22px -8px rgba(0, 0, 0, 0.43);
+    -webkit-box-shadow: -1px 1px 22px -8px rgba(0, 0, 0, 0.43);
+    -moz-box-shadow: -1px 1px 22px -8px rgba(0, 0, 0, 0.43);
+    width: 100%;
+    max-width: 400px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input[type="text"],
+input[type="email"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form input[type="text"]:focus,
+form select:focus {
+    border-color: #32b352;
+    box-shadow: 0 0 5px rgba(50, 179, 82, 0.5);
+    outline: none;
+}
+
+form input[type="email"]:focus,
+form select:focus {
+    border-color: #32b352;
+    box-shadow: 0 0 5px rgba(50, 179, 82, 0.5);
+    outline: none;
+}
+
+form select {
+    cursor: pointer;
+}
+
+form input[type="submit"] {
+    background-color: #32b352;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    letter-spacing: 2px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #28a745;
+}
+
+form input[type="submit"]:active {
+    background-color: #24963d;
+}
+
+/* personalização */
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.containerForm {
+    margin-top: 10%;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.formNewUser {
+    justify-content: center;
+}
