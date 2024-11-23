@@ -1,17 +1,20 @@
 import connection from '../config/db.js';
 
-class Usuario {
+class Tarefa {
 
-    constructor(pUsuario) {
-        this.nome = pUsuario.nome;
-        this.email = pUsuario.email;
+    constructor(pTarefa) {
+        this.id_usuario = pTarefa.id_usuario;
+        this.descricao = pTarefa.descricao;
+        this.equipe = pTarefa.equipe;
+        this.prioridade = pTarefa.prioridade;
+        this.status = pTarefa.status;
     }
 
-    async insertUsuario() {
+    async insertTarefa() {
         try {
             const conn = await connection();
-            const pSql = "INSERT INTO USUARIO (nome, email) VALUES (?,?);";
-            const pValues = [this.nome, this.email];
+            const pSql = "INSERT INTO tarefa (id_usuario, descricao, equipe, prioridade, status) VALUES (?,?,?,?,?);";
+            const pValues = [this.id_usuario, this.descricao, this.equipe, this.prioridade, this.status];
             const [result] = await conn.query(pSql, pValues);
         } catch (error) {
             throw error;
@@ -32,4 +35,5 @@ class Usuario {
     }
 }
 
-export default Usuario;
+export default Tarefa;
+

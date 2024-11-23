@@ -11,6 +11,18 @@ export const UsuarioController = {
         } catch (error) {
             res.json({ message: error })
         }
+    },
+
+    listarUsuarios: async (req, res) => {
+        try {
+
+            const users = await Usuario.listarUsuarios();
+            console.log(users);
+            res.json({ users });
+
+        } catch (error) {
+            res.json({ message: error })
+        }
     }
 
 }
