@@ -13,11 +13,10 @@ $(document).ready(function () {
         axios.post(`${localStorage.getItem('ipApi')}novoUsuario`, formData)
             .then(response => {
                 console.log(response);
-
+                window.location.reload();
                 alert('Usuario cadastrado com sucesso.')
             }).catch(error => {
                 console.log(error);
-
                 alert('Ocorreu um erro')
             })
 
