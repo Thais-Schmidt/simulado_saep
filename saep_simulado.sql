@@ -18,3 +18,15 @@ data_cadastro datetime default current_timestamp,
 status enum ("finalizado", "em desenvolvimento", "não iniciado"),
 foreign key (id_usuario) references usuario(id_usuario)
 );
+
+SELECT 
+	T.id_tarefa, T.descricao, T.equipe, T.prioridade, T.data_cadastro, T.status 
+FROM tarefa T
+INNER JOIN USUARIO U
+ON T.id_usuario = U.id_usuario;
+
+SELECT id_usuario, nome FROM usuario;
+
+SELECT * FROM simulado_saep.tarefa;
+
+UPDATE tarefa SET status='em desenvolvimento' WHERE id_tarefa=1;

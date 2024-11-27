@@ -46,7 +46,7 @@ $(document).ready(async function () {
                     
                     <div class="card-actions">
                         <button class="btn-edit" onclick="carregarPagina('novaTarefa')" href="#" data-id="${tarefa.id_tarefa}">Editar</button>
-                        <button class="btn-delete" data-id="${tarefa.id}">Apagar</button>
+                        <button class="btn-delete" data-id="${tarefa.id_tarefa}">Apagar</button>
                     </div>
 
                     <div class="card-status">
@@ -73,13 +73,24 @@ $(document).ready(async function () {
 
     await buscarTarefas();
 
-    $(document).off('submit', '#btn-save-status');
-    $(document).on('submit', '#btn-save-status', async function (event) {
-        const tasksId = $(this).data(id);
+    $(document).off('click', '.btn-save-status');
+    $(document).on('click', '.btn-save-status', async function () {
+        const tasksId = $(this).data('id');
         const newStatus = $(`.status-dropdown[data-id='${tasksId}']`).val();
 
         try {
-            await axios.get.put(`${localStorage.getItem('ipApi')}atualizarStatus/${tasksId}`, {status:newStatus});
+            await axios.put(`${localStorage.getItem('ipApi')}atualizarStatus/${tasksId}`, {status:newStatus});
+            await buscarTarefas();
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
+    $(document).on('click', '.btn-delete', async function () {
+        const id = $(this).data('id');
+        console.log(id);
+        try {
+            await axios.delete(`${localStorage.getItem('ipApi')}excluirTarefa/${id}`);
             await buscarTarefas();
         } catch (error) {
             console.log(error);
