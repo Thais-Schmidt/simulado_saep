@@ -1,5 +1,5 @@
 $(document).ready(async function () {
-
+    sessionStorage.removeItem('taskId');
     const board = {
         "Não Iniciado": document.querySelector("#nao-iniciado"),
         "Em Desenvolvimento": document.querySelector("#em-desenvolvimento"),
@@ -75,11 +75,11 @@ $(document).ready(async function () {
 
     $(document).off('click', '.btn-save-status');
     $(document).on('click', '.btn-save-status', async function () {
-        const tasksId = $(this).data('id');
-        const newStatus = $(`.status-dropdown[data-id='${tasksId}']`).val();
+        const taskId = $(this).data('id');
+        const newStatus = $(`.status-dropdown[data-id='${taskId}']`).val();
 
         try {
-            await axios.put(`${localStorage.getItem('ipApi')}atualizarStatus/${tasksId}`, {status:newStatus});
+            await axios.put(`${localStorage.getItem('ipApi')}atualizarStatus/${taskId}`, {status:newStatus});
             await buscarTarefas();
         } catch (error) {
             console.log(error);
@@ -95,7 +95,15 @@ $(document).ready(async function () {
         } catch (error) {
             console.log(error);
         }
-    })
+    });
+
+    $(document).off('click', '.btn-edit');
+    $(document).on('click', '.btn-edit', async function () {
+        const taskId = $(this).data('id');
+        sessionStorage.setItem("taskId", taskId)
+        console.log(taskId);
+       
+    });
 
 
 

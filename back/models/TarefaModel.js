@@ -80,6 +80,44 @@ class Tarefa {
             throw error;
         }
     }
+
+    static async listarTarefa(id_tarefa) {
+        try {
+            const conn = await connection();
+            const [rows] = await conn.query(
+                `SELECT	
+                    T.id_tarefa,
+                    T.descricao,
+                    T.equipe, 
+                    T.prioridade,
+                    T.data_cadastro,
+                    T.status,
+                 U.nome,
+                 T.id_usuario
+                 FROM tarefa T
+                 INNER JOIN USUARIO U 
+                 ON T.id_usuario = U.id_usuario WHERE id_tarefa=?;`, [id_tarefa]);
+            return rows;
+        } catch (error) {
+            console.log(error)
+            throw error;
+        }
+    }
+
+    async atualizarTarefa(id_tarefa) {
+        try {
+            const conn = await connection();
+            const pSql = "UPDATE tarefa SET id_usuario=?, descricao=?, equipe=?, prioridade=? WHERE id_tarefa=?;";
+            const pValues = [this.id_usuario, this.descricao, this.equipe, this.prioridade, id_tarefa];
+            const [result] = await conn.query(pSql, pValues);
+            console.log(result)
+            return result;
+        } catch (error) {
+            throw error;
+        } finally {
+            await conn.release();
+        }
+    }
 }
 
 export default Tarefa;

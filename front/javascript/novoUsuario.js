@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    sessionStorage.removeItem('taskId');
     $(document).off('submit', '#formUsuario');
     $(document).on('submit', '#formUsuario', async function (event) {
 

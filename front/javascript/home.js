@@ -15,5 +15,5 @@ function carregarPagina(pagina) {
             document.body.appendChild(scriptNovo);
         });
 }
-
+sessionStorage.removeItem('taskId');
 localStorage.setItem("ipApi","http://10.0.3.235:3000/");
