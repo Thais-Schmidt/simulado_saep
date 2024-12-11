@@ -1,6 +1,5 @@
 function carregarPagina(pagina) {
     const conteudoPrincipal = document.getElementById('conteudoPrincipal');
-
     const url = `${pagina}.html`;
     const script = `${pagina}.js`;
 

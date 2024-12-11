@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
     const taskId = sessionStorage.getItem("taskId");
     console.log("Editar tarefa:", taskId);
 
